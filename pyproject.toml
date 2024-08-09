@@ -8,9 +8,15 @@ readme = "README.md"
 packages = [{include = "numba_pokemon_prngs"}]
 
 [tool.poetry.dependencies]
-python = ">= 3.8, < 3.12"
-numpy = ">=1.18, <1.24"
-numba = {version = "^0.57.1", optional = true}
+python = ">= 3.7.2, < 3.13"
+numpy = [
+    {version = ">=1.18", python = "<3.9"},
+    {version = ">=1.26", python = ">=3.9"}
+]
+numba = [
+    {version = "^0.56.4", python = "<3.9", optional = true},
+    {version = "^0.59.0", python = ">=3.9", optional = true},
+]
 flatbuffers = "^23.3.3"
 
 [tool.poetry.extras]
@@ -20,7 +26,10 @@ numba = ["numba"]
 poetry = "^1.3.2"
 black = "^23.1.0"
 pytest = "^7.2.1"
-pylint = "^2.16.1"
+pylint = [
+    {version = "^2.16.1", python = "<3.8"},
+    {version = "^3.2.6", python = ">=3.8"},
+]
 
 [build-system]
 requires = ["poetry-core"]

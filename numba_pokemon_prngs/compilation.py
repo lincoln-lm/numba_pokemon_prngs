@@ -24,10 +24,10 @@ if USE_NUMBA:
             if isinstance(input_type, numba.types.Type)
             else (
                 numba.void
-                if input_type == np.void0
+                if input_type == np.void
                 else (
                     numba_string
-                    if input_type == np.str0
+                    if input_type == np.str_
                     else (
                         input_type.class_type.instance_type
                         if hasattr(input_type, "class_type")

@@ -57,11 +57,11 @@ def compute_stat(stat: np.uint16, nature: np.uint8, index: np.int8):
     return np.uint16(np.float32(stat) * NATURE_MODIFIERS[nature][index - 1])
 
 
-HEX_LOOKUP = np.array([f"{i:02X}" for i in range(256)], dtype=np.str0)
+HEX_LOOKUP = np.array([f"{i:02X}" for i in range(256)], dtype=np.str_)
 
 
-@optional_njit(return_type(np.str0, (np.uint32,)))
-def hex_32(num: np.uint32) -> np.str0:
+@optional_njit(return_type(np.str_, (np.uint32,)))
+def hex_32(num: np.uint32) -> np.str_:
     """Display 32-bit number as a 0 padded hex string"""
     return (
         HEX_LOOKUP[num >> 24]

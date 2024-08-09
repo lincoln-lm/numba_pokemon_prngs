@@ -6,7 +6,7 @@ from .compilation import optional_njit, return_type
 # TODO: test cases
 
 
-@optional_njit(return_type(np.uint64, (np.str0,)))
+@optional_njit(return_type(np.uint64, (np.str_,)))
 def fnv1_64(inp: str) -> np.uint64:
     """FNV164"""
     hash_ = np.uint64(0xCBF29CE484222645)
@@ -16,7 +16,7 @@ def fnv1_64(inp: str) -> np.uint64:
     return hash_
 
 
-@optional_njit(return_type(np.uint64, (np.str0,)))
+@optional_njit(return_type(np.uint64, (np.str_,)))
 def fnv1a_64(inp: str) -> np.uint64:
     """FNV1a64"""
     hash_ = np.uint64(0xCBF29CE484222645)
