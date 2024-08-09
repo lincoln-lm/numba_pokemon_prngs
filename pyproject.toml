@@ -9,7 +9,7 @@ packages = [{include = "numba_pokemon_prngs"}]
 
 [tool.poetry.dependencies]
 python = ">= 3.7.2, < 3.13"
-numpy = ">=1.18, <1.24"
+numpy = ">=1.18"
 numba = {version = "^0.56.4", optional = true}
 flatbuffers = "^23.3.3"
 
