@@ -5,7 +5,7 @@ name = "astroid"
 version = "2.15.8"
 description = "An abstract syntax tree for Python with inference support."
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.7.2"
 files = [
     {file = "astroid-2.15.8-py3-none-any.whl", hash = "sha256:1aa149fc5c6589e3d0ece885b4491acd80af4f087baafa3fb5203b113e68cd3c"},
@@ -23,7 +23,7 @@ name = "astroid"
 version = "3.2.4"
 description = "An abstract syntax tree for Python with inference support."
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.8.0"
 files = [
     {file = "astroid-3.2.4-py3-none-any.whl", hash = "sha256:413658a61eeca6202a59231abb473f932038fbcbf1666587f66d482083413a25"},
@@ -465,7 +465,7 @@ name = "dill"
 version = "0.3.7"
 description = "serialize all of Python"
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.7"
 files = [
     {file = "dill-0.3.7-py3-none-any.whl", hash = "sha256:76b122c08ef4ce2eedcd4d1abd8e641114bfc6c2867f49f3c41facf65bf19f5e"},
@@ -480,7 +480,7 @@ name = "dill"
 version = "0.3.8"
 description = "serialize all of Python"
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.8"
 files = [
     {file = "dill-0.3.8-py3-none-any.whl", hash = "sha256:c36ca9ffb54365bdd2f8eb3eff7d2a21237f8452b57ace88b1ac615b7e815bd7"},
@@ -738,7 +738,7 @@ name = "isort"
 version = "5.11.5"
 description = "A Python utility / library to sort Python imports."
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.7.0"
 files = [
     {file = "isort-5.11.5-py3-none-any.whl", hash = "sha256:ba1d72fb2595a01c7895a5128f9585a5cc4b6d395f1c8d514989b9a7eb2a8746"},
@@ -756,7 +756,7 @@ name = "isort"
 version = "5.13.2"
 description = "A Python utility / library to sort Python imports."
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.8.0"
 files = [
     {file = "isort-5.13.2-py3-none-any.whl", hash = "sha256:8ca5e72a8d85860d5a3fa69b8745237f2939afe12dbf656afbcb47fe72d947a6"},
@@ -855,7 +855,7 @@ name = "lazy-object-proxy"
 version = "1.9.0"
 description = "A fast and thorough lazy object proxy."
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.7"
 files = [
     {file = "lazy-object-proxy-1.9.0.tar.gz", hash = "sha256:659fb5809fa4629b8a1ac5106f669cfc7bef26fbb389dda53b3e010d1ac4ebae"},
@@ -982,7 +982,7 @@ name = "mccabe"
 version = "0.7.0"
 description = "McCabe checker, plugin for flake8"
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.6"
 files = [
     {file = "mccabe-0.7.0-py2.py3-none-any.whl", hash = "sha256:6c2d30ab6be0e4a46919781807b4f0d834ebdd6c6e3dca0bda5a15f863427b6e"},
@@ -1459,7 +1459,7 @@ name = "pylint"
 version = "2.17.7"
 description = "python code static checker"
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.7.2"
 files = [
     {file = "pylint-2.17.7-py3-none-any.whl", hash = "sha256:27a8d4c7ddc8c2f8c18aa0050148f89ffc09838142193fdbe98f172781a3ff87"},
@@ -1486,7 +1486,7 @@ name = "pylint"
 version = "3.2.6"
 description = "python code static checker"
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.8.0"
 files = [
     {file = "pylint-3.2.6-py3-none-any.whl", hash = "sha256:03c8e3baa1d9fb995b12c1dbe00aa6c4bcef210c2a2634374aedeb22fb4a8f8f"},
@@ -1967,7 +1967,7 @@ name = "wrapt"
 version = "1.16.0"
 description = "Module for decorators, wrappers and monkey patching."
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.6"
 files = [
     {file = "wrapt-1.16.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:ffa565331890b90056c01db69c0fe634a776f8019c143a5ae265f9c6bc4bd6d4"},
@@ -2149,4 +2149,4 @@ numba = ["numba", "numba"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">= 3.7.2, < 3.13"
-content-hash = "256dee0da348407392d7a9a362885cbf83b6ef236cf0ad39008c249982bb0cf4"
+content-hash = "18bb0cf55d7775f5be4353c049242dd3427f1970e9a07f426d8d37022515ca56"
