@@ -10,7 +10,4 @@ import numpy as np
 np.seterr(over="ignore")
 del np
 
-from .rng_list import build_rnglist, RNGList
-from .sha1 import SHA1
-
 # pylint: disable=wrong-import-position,wrong-import-order

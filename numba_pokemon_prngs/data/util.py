@@ -13,13 +13,19 @@ class DTypeDataclass(Protocol):
 
 
 if TYPE_CHECKING:
+    BOOL8 = np.bool8
     U8 = np.uint8
     U16 = np.uint16
     U32 = np.uint32
+    U64 = np.uint64
+    F32 = np.float32
 else:
+    BOOL8 = np.dtype("b1")
     U8 = np.dtype("u1")
     U16 = np.dtype("<u2")
     U32 = np.dtype("<u4")
+    U64 = np.dtype("<u8")
+    F32 = np.dtype("<f4")
 
 
 def dtype_dataclass(cls):
