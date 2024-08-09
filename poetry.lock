@@ -1979,4 +1979,4 @@ numba = ["numba"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">= 3.7.2, < 3.13"
-content-hash = "c1b5c4d0dde7736b62da3f0b21360e7b4c9f7560f7d36dd4a1cba88898e4a861"
+content-hash = "ae8b34f3bcda6c0a32bceabc24c99858efb7b6b6e73b502214c552de83c70805"
