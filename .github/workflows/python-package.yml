@@ -50,7 +50,8 @@ jobs:
         poetry run black . --diff 
     - name: Build wheel via poetry
       run: poetry build --format=wheel
-    - name: Upload Wheel Artifact
+    - name: Upload 3.12 Wheel Artifact
+      if: ${{ matrix.python-version }} == "3.12"
       uses: actions/upload-artifact@v4
       with:
         name: wheel-artifact
