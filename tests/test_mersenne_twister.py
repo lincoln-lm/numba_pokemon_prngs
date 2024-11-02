@@ -46,10 +46,10 @@ def test_init():
             for seed in (0x12345678, 0xDEADBEEF, 0x88776655, 0xCAFEBEEF)
         )
     ) == (
-        "3638ef812de23a06ffbec0c4e9abc3c155cf0912c3385e14d7173cb5d3937a39",
-        "60b6d3900e32a93c9966652ecfbc8fb4cd72a20c2587ec8bcb62427be3068bb5",
-        "953690085212afe1596413f24da480062d82b4d36f9dafc219ae321ca42ce658",
-        "6676b3aa5a324abc261c3b406abb192c1c44da1ae88b99f2f1100cb5b597f7c8",
+        '350d288590dfff8eca6d4706564c5f9ea8f5a91cd8c34ca2ea80403354f5f1ae',
+        'de1246ade9d190ce834d1d8eca60dba6c1cca2ec1f1147a27aae02db69b75210',
+        'f20117066fc37e31df5a1f69d28598dabb7cbe54c5c19e0d476d1cce270c2804',
+        '1da1314cbd0d62a328c4f6dc2bc44bcea4cd828e8522e7713a1322f0696b4305'
     )
 
 
@@ -83,10 +83,10 @@ def test_shuffle():
         sha256(test_tinymt.state.tobytes()).hexdigest()
         for _ in (test_tinymt.shuffle() for _ in range(4))
     ) == (
-        "50f5074de3eeb415f816948588d407261c0833b1b2bcb0661ac92719a6c7dcc8",
-        "23e7114485474485b4ca928c1dbe6bf05dc302951cfcddbbd06a2b8c891a99a5",
-        "59b44e0b82d3464ffc8978d100796c153355da25fb45538953e9d04c900b4e7f",
-        "633391236055e9a4b8d9a144d834990c96fb919cb30379d508251cc7aba4b5ba",
+        '37602281ccc1077e337dd26dfc3091a8246e7ae112b5ba7cf30f429434689698',
+        '1599a6b80a09a3b96bbc3e0504aee7ec791f84f307cc9cff9830e17a6ef557c6',
+        'afc1f50d08c709bd6b7ae61d1ce4994a33c2d30ded8bee4fb85a22c20bec8bf3',
+        '50623afc3625b181897c68501f32b40cd604147e03bd3f6ee1386d4d49f6e472'
     )
 
 
@@ -110,11 +110,11 @@ def test_next():
         2976335783597749142,
     )
     assert tuple(test_tinymt.next() for _ in range(5)) == (
-        1025822,
-        2123361235,
-        2978809828,
-        2070750042,
-        1879513653,
+        2481148692,
+        2185716838,
+        3625480341,
+        3369169125,
+        3389594172
     )
 
 
@@ -161,19 +161,19 @@ def test_next_rand():
         tuple(test_tinymt.next_rand(maximum) for _ in range(5))
         for maximum in (2, 5, 25, 100, 256)
     ) == (
-        (0, 0, 1, 0, 0),
-        (1, 0, 0, 1, 1),
-        (10, 17, 20, 6, 4),
-        (42, 79, 24, 10, 28),
-        (60, 77, 117, 42, 145),
+        (1, 1, 1, 1, 1),
+        (1, 0, 2, 4, 0),
+        (23, 0, 4, 20, 21),
+        (59, 51, 5, 47, 77),
+        (156, 84, 195, 5, 150)
     )
     assert tuple(
         tuple(test_tinymt.next_rand_mod(maximum) for _ in range(5))
         for maximum in (2, 5, 25, 100, 256)
     ) == (
-        (1, 0, 0, 0, 0),
-        (2, 2, 1, 3, 4),
-        (1, 0, 9, 20, 24),
-        (76, 76, 89, 3, 13),
-        (206, 170, 162, 66, 85),
+        (0, 0, 1, 1, 0),
+        (2, 2, 2, 0, 3),
+        (20, 14, 8, 22, 2),
+        (98, 10, 40, 11, 54),
+        (30, 185, 57, 8, 182)
     )
