@@ -26,7 +26,7 @@ class TinyMersenneTwister:
         self.state[1] = 0x8F7011EE
         self.state[2] = 0xFC78FF1F
         self.state[3] = 0x3793FDFF
-        for i in range(8):
+        for i in range(1, 8):
             self.state[i & 3] ^= np.uint32(
                 np.uint32(0x6C078965)
                 * (self.state[(i - 1) & 3] ^ (self.state[(i - 1) & 3] >> np.uint32(30)))
