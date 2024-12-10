@@ -14,7 +14,9 @@ from ..fbs.encounter_la import (
     EncounterTable8aTable,
     PlacementSpawner8aTable,
     EncounterMultiplier8aTable,
-    PokeMisc8aTable
+    PokeMisc8aTable,
+    NewHugeOutbreakGroupLotteryTable8a,
+    NewHugeOutbreakGroupTable8a
 )
 from .. import CONSTANT_CASE_SPECIES_EN
 from ...resources import encount
@@ -393,6 +395,14 @@ ENCOUNTER_MULTIPLIER_LA = EncounterMultiplier8aTable(
 
 POKE_MISC_LA = PokeMisc8aTable(
     pkg_resources.read_binary(encount.la, "poke_misc.bin")
+)
+
+NHO_LOTTERY_TABLE_LA = NewHugeOutbreakGroupLotteryTable8a(
+    pkg_resources.read_binary(encount.la, "new_huge_outbreak_group_lottery.bin")
+)
+
+NHO_GROUP_TABLE_LA = NewHugeOutbreakGroupTable8a(
+    pkg_resources.read_binary(encount.la, "new_huge_outbreak_group.bin")
 )
 
 ALPHA_LEVEL_BOOSTS_LA = (15, 15, 15, 20, 20)

@@ -199,3 +199,75 @@ class EncounterOybnTraits8a(FlatBufferObject):
         super().__init__(buf, offset)
         self.is_alpha: bool = any(self.read_init_int_enum(I8, bool) for _ in range(2))
         # self.read_init_padding(2)
+
+class NewHugeOutbreakGroupTable8a(FlatBufferObject):
+    """MMO group table"""
+
+    def __init__(self, buf: bytearray):
+        super().__init__(buf)
+        self.groups: List[NewHugeOutbreakGroup8a] = self.read_init_object_array(
+            NewHugeOutbreakGroup8a
+        )
+        self.group_lookup: Dict[np.uint64, NewHugeOutbreakGroup8a] = {
+            group.hash: group for group in self.groups
+        }
+
+class NewHugeOutbreakGroup8a(FlatBufferObject):
+    """MMO group"""
+
+    def __init__(self, buf: bytearray, offset: int):
+        super().__init__(buf, offset)
+        self.hash: np.uint64 = self.read_init_int(U64)
+        self.wave_details: List[NewHugeOutbreakSecondWave8a] = (
+            self.read_init_object_array(NewHugeOutbreakSecondWave8a)
+        )
+        self.first_wave_encounter_table_id: np.uint64 = self.read_init_int(U64)
+
+class NewHugeOutbreakSecondWave8a(FlatBufferObject):
+    """MMO second wave detail"""
+
+    def __init__(self, buf: bytearray, offset: int):
+        super().__init__(buf, offset)
+        # condition information
+        self.read_init_padding(7)
+        self.encounter_table_id: np.uint64 = self.read_init_int(U64)
+        # self.rate: np.int32 = self.read_init_int(I32)
+
+class NewHugeOutbreakGroupLotteryTable8a(FlatBufferObject):
+    """MMO group tables per map"""
+
+    def __init__(self, buf: bytearray):
+        super().__init__(buf)
+        self.lottery_groups: List[NewHugeOutbreakGroupLottery8a] = (
+            self.read_init_object_array(NewHugeOutbreakGroupLottery8a)
+        )
+        self.lottery_group_lookup: Dict[np.uint64, NewHugeOutbreakGroupLottery8a] = {
+            group.hash: group for group in self.lottery_groups
+        }
+
+class NewHugeOutbreakGroupLottery8a(FlatBufferObject):
+    """MMO group lottery table"""
+
+    def __init__(self, buf: bytearray, offset: int):
+        super().__init__(buf, offset)
+        self.hash: np.uint64 = self.read_init_int(U64)
+        self.table_common: List[NewHugeOutbreakGroupLotteryDetail8a] = (
+            self.read_init_object_array(NewHugeOutbreakGroupLotteryDetail8a)
+        )
+        self.table_rare_1: List[NewHugeOutbreakGroupLotteryDetail8a] = (
+            self.read_init_object_array(NewHugeOutbreakGroupLotteryDetail8a)
+        )
+        self.table_rare_2: List[NewHugeOutbreakGroupLotteryDetail8a] = (
+            self.read_init_object_array(NewHugeOutbreakGroupLotteryDetail8a)
+        )
+        self.full_table: List[NewHugeOutbreakGroupLotteryDetail8a] = (
+            self.table_common + self.table_rare_1 + self.table_rare_2
+        )
+
+class NewHugeOutbreakGroupLotteryDetail8a(FlatBufferObject):
+    """MMO group lottery"""
+
+    def __init__(self, buf: bytearray, offset: int):
+        super().__init__(buf, offset)
+        self.hash: np.uint64 = self.read_init_int(U64)
+        # self.rate: np.int32 = self.read_init_int(I32)
