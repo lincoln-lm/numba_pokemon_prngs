@@ -263,6 +263,9 @@ class NewHugeOutbreakGroupLottery8a(FlatBufferObject):
         self.full_table: List[NewHugeOutbreakGroupLotteryDetail8a] = (
             self.table_common + self.table_rare_1 + self.table_rare_2
         )
+        self.full_table_lookup: Dict[np.uint64, NewHugeOutbreakGroupLotteryDetail8a] = {
+            detail.hash: detail for detail in self.full_table
+        }
 
 class NewHugeOutbreakGroupLotteryDetail8a(FlatBufferObject):
     """MMO group lottery"""
