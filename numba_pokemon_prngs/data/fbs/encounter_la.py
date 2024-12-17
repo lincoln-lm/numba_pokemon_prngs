@@ -75,6 +75,12 @@ class PlacementSpawner8aTable(FlatBufferObject):
         self.spawners: List[PlacementSpawner8a] = self.read_init_object_array(
             PlacementSpawner8a
         )
+        self.spawner_table_lookup: Dict[np.uint64, PlacementSpawner8a] = {
+            spawner.spawner_id: spawner for spawner in self.spawners
+        }
+        self.spawner_by_group: Dict[np.uint64, PlacementSpawner8a] = {
+            spawner.group_id: spawner for spawner in self.spawners
+        }
 
 
 class PlacementSpawner8a(FlatBufferObject):
@@ -83,7 +89,7 @@ class PlacementSpawner8a(FlatBufferObject):
     def __init__(self, buf: bytearray, offset: int):
         super().__init__(buf, offset)
         self.spawner_id: np.uint64 = self.read_init_int(U64)
-        self.read_init_padding(1)
+        self.group_id: np.uint64 = self.read_init_int(U64)
         # a little hacky
         self.coordinates: Vec3F = self.read_init_object_array(PlacementParameters8a)[
             0
