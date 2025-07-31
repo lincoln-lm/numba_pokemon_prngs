@@ -109,4 +109,4 @@ class Xorshift128:
             0x7FFFFF
         )
 
-        return np.float32(np.float32(rand_float * minimum) + np.float32(np.float32(np.float32(1) - rand_float) * maximum)))
+        return np.float32(np.float32(rand_float * minimum) + np.float32(np.float32(np.float32(1) - rand_float) * maximum))
