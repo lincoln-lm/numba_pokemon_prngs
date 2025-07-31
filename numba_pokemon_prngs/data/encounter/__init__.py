@@ -16,7 +16,7 @@ from ..fbs.encounter_la import (
     EncounterMultiplier8aTable,
     PokeMisc8aTable,
     NewHugeOutbreakGroupLotteryTable8a,
-    NewHugeOutbreakGroupTable8a
+    NewHugeOutbreakGroupTable8a,
 )
 from .. import CONSTANT_CASE_SPECIES_EN
 from ...resources import encount
@@ -24,11 +24,13 @@ from ...enums import Game, LAArea
 from ...compilation import TypedDict
 from ...fnv import fnv1a_64
 
-def pickle_cached(filename: str, encode = None, decode = None):
+
+def pickle_cached(filename: str, encode=None, decode=None):
     """Cache results of a function next to the executable"""
     cache_dir = user_cache_dir("numba_pokemon_prngs", "Lincoln-LM")
     filename = cache_dir + "/" + filename
     pathlib.Path(cache_dir).mkdir(parents=True, exist_ok=True)
+
     def wrapper(function):
         def wrapped(*args, **kwargs):
             pkl_filename = filename.format(*args, **kwargs)
@@ -47,8 +49,11 @@ def pickle_cached(filename: str, encode = None, decode = None):
                 else:
                     pickle.dump(result, pickled_file)
             return result
+
         return wrapped
+
     return wrapper
+
 
 ENCOUNTER_DATA_FILES = {
     Game.RUBY: "rs_wild_encounters.json",
@@ -295,6 +300,7 @@ ENCOUNTER_INFORMATION_GEN3 = {
     Game.LEAF_GREEN: ENCOUNTER_INFORMATION_LEAF_GREEN,
 }
 
+
 def encounter_tables_la_decode(regular_dict):
     map_encounter_area_lookup = TypedDict(
         key_type=np.uint64, value_type=EncounterAreaLA
@@ -306,6 +312,7 @@ def encounter_tables_la_decode(regular_dict):
         map_encounter_area_lookup[np.uint64(key)] = value
     return map_encounter_area_lookup
 
+
 def encounter_tables_la_encode(typed_dict):
     regular_dict = {}
     for key in typed_dict.keys():
@@ -313,10 +320,11 @@ def encounter_tables_la_encode(typed_dict):
         regular_dict[int(key)] = (value.table_id, value.slots)
     return regular_dict
 
+
 @pickle_cached(
     "encounter_tables_la_{}.pkl",
     encode=encounter_tables_la_encode,
-    decode=encounter_tables_la_decode
+    decode=encounter_tables_la_decode,
 )
 def load_encounter_tables_la(map_area: LAArea):
     """Load encounter tables for a map in Pokemon: Legends Arceus"""
@@ -351,8 +359,12 @@ def load_encounter_tables_la(map_area: LAArea):
             encounter_area_slots[i].is_alpha = slot.is_alpha
             # apply OYBN level range boosts
             if slot.is_alpha:
-                poke_misc_data = POKE_MISC_LA.misc_lookup[(slot.species, slot.form or 0)]
-                level_boost = ALPHA_LEVEL_BOOSTS_LA[poke_misc_data.alpha_level_index - 1]
+                poke_misc_data = POKE_MISC_LA.misc_lookup[
+                    (slot.species, slot.form or 0)
+                ]
+                level_boost = ALPHA_LEVEL_BOOSTS_LA[
+                    poke_misc_data.alpha_level_index - 1
+                ]
                 encounter_area_slots[i].min_level += level_boost
                 encounter_area_slots[i].max_level += level_boost
             # bake multipliers into encounter area table
@@ -393,9 +405,7 @@ ENCOUNTER_MULTIPLIER_LA = EncounterMultiplier8aTable(
     pkg_resources.read_binary(encount.la, "poke_encount.bin")
 )
 
-POKE_MISC_LA = PokeMisc8aTable(
-    pkg_resources.read_binary(encount.la, "poke_misc.bin")
-)
+POKE_MISC_LA = PokeMisc8aTable(pkg_resources.read_binary(encount.la, "poke_misc.bin"))
 
 NHO_LOTTERY_TABLE_LA = NewHugeOutbreakGroupLotteryTable8a(
     pkg_resources.read_binary(encount.la, "new_huge_outbreak_group_lottery.bin")
@@ -433,12 +443,12 @@ SPAWNER_INFORMATION_LA = {
 
 SPAWNER_NAMES_LA = json.loads(
     pkg_resources.read_text(encount.la, "spawner_names.json"),
-    object_hook=lambda x: {int(k): v for k,v in x.items()}
+    object_hook=lambda x: {int(k): v for k, v in x.items()},
 )
 
 ENCOUNTER_TABLE_NAMES_LA = json.loads(
     pkg_resources.read_text(encount.la, "encounter_table_names.json"),
-    object_hook=lambda x: {int(k): v for k,v in x.items()}
+    object_hook=lambda x: {int(k): v for k, v in x.items()},
 )
 
 # SPAWNER_NAMES_LA = {}

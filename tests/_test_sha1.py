@@ -1,4 +1,5 @@
 """Tests for SHA-1 hash function"""
+
 from __future__ import annotations
 import numpy as np
 from numba_pokemon_prngs.sha1 import SHA1

@@ -1,4 +1,5 @@
 """Tests for LCRNG classes"""
+
 from numba_pokemon_prngs.lcrng import (
     PokeRNGDiv,
     PokeRNGMod,

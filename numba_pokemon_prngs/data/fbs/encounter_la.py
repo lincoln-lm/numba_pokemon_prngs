@@ -10,9 +10,9 @@ class EncounterMultiplier8aTable(FlatBufferObject):
 
     def __init__(self, buf: bytearray):
         FlatBufferObject.__init__(self, buf)
-        self.encounter_multipliers: List[
-            EncounterMultiplier8a
-        ] = self.read_init_object_array(EncounterMultiplier8a)
+        self.encounter_multipliers: List[EncounterMultiplier8a] = (
+            self.read_init_object_array(EncounterMultiplier8a)
+        )
         self.multiplier_lookup: Dict[Tuple[int, int], EncounterMultiplier8a] = {
             (multiplier.species, multiplier.form or 0): multiplier
             for multiplier in self.encounter_multipliers
@@ -47,12 +47,9 @@ class PokeMisc8aTable(FlatBufferObject):
 
     def __init__(self, buf: bytearray):
         FlatBufferObject.__init__(self, buf)
-        self.misc_list: List[
-            PokeMisc8a
-        ] = self.read_init_object_array(PokeMisc8a)
+        self.misc_list: List[PokeMisc8a] = self.read_init_object_array(PokeMisc8a)
         self.misc_lookup: Dict[Tuple[int, int], PokeMisc8a] = {
-            (misc.species, misc.form or 0): misc
-            for misc in self.misc_list
+            (misc.species, misc.form or 0): misc for misc in self.misc_list
         }
 
 
@@ -66,6 +63,7 @@ class PokeMisc8a(FlatBufferObject):
         self.read_init_padding(4)
         self.alpha_level_index: np.int32 = self.read_init_int(I32, 0)
         # self.read_init_padding(16)
+
 
 class PlacementSpawner8aTable(FlatBufferObject):
     """Array of Spawner specifications (root object)"""
@@ -160,7 +158,7 @@ class EncounterSlot8a(FlatBufferObject):
     def __init__(self, buf: bytearray, offset: int):
         super().__init__(buf, offset)
         self.species: np.int32 = self.read_init_int(I32)
-        self.read_init_padding(1) # slot id
+        self.read_init_padding(1)  # slot id
         self.gender: np.int32 = self.read_init_int(I32, 0)
         self.form: np.int32 = self.read_init_int(I32)
         self.read_init_padding(21)
@@ -206,6 +204,7 @@ class EncounterOybnTraits8a(FlatBufferObject):
         self.is_alpha: bool = any(self.read_init_int_enum(I8, bool) for _ in range(2))
         # self.read_init_padding(2)
 
+
 class NewHugeOutbreakGroupTable8a(FlatBufferObject):
     """MMO group table"""
 
@@ -218,6 +217,7 @@ class NewHugeOutbreakGroupTable8a(FlatBufferObject):
             group.hash: group for group in self.groups
         }
 
+
 class NewHugeOutbreakGroup8a(FlatBufferObject):
     """MMO group"""
 
@@ -229,6 +229,7 @@ class NewHugeOutbreakGroup8a(FlatBufferObject):
         )
         self.first_wave_encounter_table_id: np.uint64 = self.read_init_int(U64)
 
+
 class NewHugeOutbreakSecondWave8a(FlatBufferObject):
     """MMO second wave detail"""
 
@@ -238,6 +239,7 @@ class NewHugeOutbreakSecondWave8a(FlatBufferObject):
         self.read_init_padding(7)
         self.encounter_table_id: np.uint64 = self.read_init_int(U64)
         # self.rate: np.int32 = self.read_init_int(I32)
+
 
 class NewHugeOutbreakGroupLotteryTable8a(FlatBufferObject):
     """MMO group tables per map"""
@@ -250,6 +252,7 @@ class NewHugeOutbreakGroupLotteryTable8a(FlatBufferObject):
         self.lottery_group_lookup: Dict[np.uint64, NewHugeOutbreakGroupLottery8a] = {
             group.hash: group for group in self.lottery_groups
         }
+
 
 class NewHugeOutbreakGroupLottery8a(FlatBufferObject):
     """MMO group lottery table"""
@@ -272,6 +275,7 @@ class NewHugeOutbreakGroupLottery8a(FlatBufferObject):
         self.full_table_lookup: Dict[np.uint64, NewHugeOutbreakGroupLotteryDetail8a] = {
             detail.hash: detail for detail in self.full_table
         }
+
 
 class NewHugeOutbreakGroupLotteryDetail8a(FlatBufferObject):
     """MMO group lottery"""

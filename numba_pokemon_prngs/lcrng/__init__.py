@@ -1,4 +1,5 @@
 """Linear Congruential Pseudo Random Number Generators"""
+
 from .lcrng32 import (
     LCRNG32,
     LCRNG32RandomDistribution,

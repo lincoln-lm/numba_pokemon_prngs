@@ -1,4 +1,5 @@
 """Tests for Mersenne Twister classes"""
+
 from hashlib import sha256
 from numba_pokemon_prngs.mersenne_twister import (
     MersenneTwister,
@@ -46,10 +47,10 @@ def test_init():
             for seed in (0x12345678, 0xDEADBEEF, 0x88776655, 0xCAFEBEEF)
         )
     ) == (
-        '350d288590dfff8eca6d4706564c5f9ea8f5a91cd8c34ca2ea80403354f5f1ae',
-        'de1246ade9d190ce834d1d8eca60dba6c1cca2ec1f1147a27aae02db69b75210',
-        'f20117066fc37e31df5a1f69d28598dabb7cbe54c5c19e0d476d1cce270c2804',
-        '1da1314cbd0d62a328c4f6dc2bc44bcea4cd828e8522e7713a1322f0696b4305'
+        "350d288590dfff8eca6d4706564c5f9ea8f5a91cd8c34ca2ea80403354f5f1ae",
+        "de1246ade9d190ce834d1d8eca60dba6c1cca2ec1f1147a27aae02db69b75210",
+        "f20117066fc37e31df5a1f69d28598dabb7cbe54c5c19e0d476d1cce270c2804",
+        "1da1314cbd0d62a328c4f6dc2bc44bcea4cd828e8522e7713a1322f0696b4305",
     )
 
 
@@ -83,10 +84,10 @@ def test_shuffle():
         sha256(test_tinymt.state.tobytes()).hexdigest()
         for _ in (test_tinymt.shuffle() for _ in range(4))
     ) == (
-        '37602281ccc1077e337dd26dfc3091a8246e7ae112b5ba7cf30f429434689698',
-        '1599a6b80a09a3b96bbc3e0504aee7ec791f84f307cc9cff9830e17a6ef557c6',
-        'afc1f50d08c709bd6b7ae61d1ce4994a33c2d30ded8bee4fb85a22c20bec8bf3',
-        '50623afc3625b181897c68501f32b40cd604147e03bd3f6ee1386d4d49f6e472'
+        "37602281ccc1077e337dd26dfc3091a8246e7ae112b5ba7cf30f429434689698",
+        "1599a6b80a09a3b96bbc3e0504aee7ec791f84f307cc9cff9830e17a6ef557c6",
+        "afc1f50d08c709bd6b7ae61d1ce4994a33c2d30ded8bee4fb85a22c20bec8bf3",
+        "50623afc3625b181897c68501f32b40cd604147e03bd3f6ee1386d4d49f6e472",
     )
 
 
@@ -114,7 +115,7 @@ def test_next():
         2185716838,
         3625480341,
         3369169125,
-        3389594172
+        3389594172,
     )
 
 
@@ -165,7 +166,7 @@ def test_next_rand():
         (1, 0, 2, 4, 0),
         (23, 0, 4, 20, 21),
         (59, 51, 5, 47, 77),
-        (156, 84, 195, 5, 150)
+        (156, 84, 195, 5, 150),
     )
     assert tuple(
         tuple(test_tinymt.next_rand_mod(maximum) for _ in range(5))
@@ -175,5 +176,5 @@ def test_next_rand():
         (2, 2, 2, 0, 3),
         (20, 14, 8, 22, 2),
         (98, 10, 40, 11, 54),
-        (30, 185, 57, 8, 182)
+        (30, 185, 57, 8, 182),
     )

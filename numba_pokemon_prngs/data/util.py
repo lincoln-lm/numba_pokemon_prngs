@@ -38,12 +38,14 @@ def dtype_dataclass(cls):
         [
             (
                 field.name,
-                field.type.dtype
-                if hasattr(field.type, "dtype")
-                else (
-                    field.type.__metadata__[0]
-                    if hasattr(field.type, "__metadata__")
-                    else field.type
+                (
+                    field.type.dtype
+                    if hasattr(field.type, "dtype")
+                    else (
+                        field.type.__metadata__[0]
+                        if hasattr(field.type, "__metadata__")
+                        else field.type
+                    )
                 ),
             )
             for field in fields(dataclass_cls)

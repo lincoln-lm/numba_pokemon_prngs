@@ -1,4 +1,5 @@
 """Utility @njit compiled numba functions"""
+
 import numpy as np
 from .compilation import optional_njit, return_type
 

@@ -1,4 +1,5 @@
 """Pokemon language enum"""
+
 from enum import IntEnum
 
 

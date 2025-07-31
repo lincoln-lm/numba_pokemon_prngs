@@ -15,8 +15,7 @@ class RNGList(Protocol):
     """List of cached PRNG results to avoid needing to
     re-initialize or go backwards to reuse previous rands"""
 
-    def __init__(self, rng: PRNG) -> None:
-        ...
+    def __init__(self, rng: PRNG) -> None: ...
 
     def re_init(self):
         """Reinitialize without creating a new object"""
