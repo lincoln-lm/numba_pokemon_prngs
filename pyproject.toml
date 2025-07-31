@@ -15,7 +15,8 @@ numpy = [
 ]
 numba = [
     {version = "^0.56.4", python = "<3.9", optional = true},
-    {version = "^0.61.0", python = ">=3.9", optional = true},
+    {version = "^0.59.0", python = ">=3.9, <3.10", optional = true},
+    {version = "^0.61.0", python = ">=3.10", optional = true},
 ]
 flatbuffers = "^23.3.3"
 
