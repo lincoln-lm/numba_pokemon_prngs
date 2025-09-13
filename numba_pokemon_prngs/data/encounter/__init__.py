@@ -344,7 +344,7 @@ def load_encounter_tables_la(map_area: LAArea):
         encounter_area_slots = encounter_area.slots.view(np.recarray)
         for i, slot in enumerate(encounter_area_fb.encounter_slots):
             encounter_area_slots[i].species = slot.species
-            encounter_area_slots[i].gender = slot.gender
+            encounter_area_slots[i].gender = slot.gender & 0xFF
             encounter_area_slots[i].form = slot.form or 0
             encounter_area_slots[i].guaranteed_ivs = slot.guaranteed_ivs or 0
             encounter_area_slots[i].min_level = (
