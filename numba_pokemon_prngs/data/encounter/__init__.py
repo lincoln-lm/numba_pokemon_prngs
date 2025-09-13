@@ -332,7 +332,9 @@ def load_encounter_tables_la(map_area: LAArea):
         key_type=np.uint64, value_type=EncounterAreaLA
     )
     flatbuffer_encounter_lookup = EncounterTable8aTable(
-        pkg_resources.read_binary(encount.la, f"ha_area{map_area:02d}_encounter.bin")
+        pkg_resources.read_binary(
+            encount.la, f"ha_area{map_area & 0xFF:02d}_encounter.bin"
+        )
     ).encounter_tables
     for encounter_area_fb in flatbuffer_encounter_lookup:
         encounter_area = EncounterAreaLA(
@@ -430,13 +432,17 @@ ENCOUNTER_INFORMATION_LA = {
 
 SPAWNER_INFORMATION_LA = {
     map_area: PlacementSpawner8aTable(
-        pkg_resources.read_binary(encount.la, f"ha_area{map_area:02d}_spawner.bin")
+        pkg_resources.read_binary(
+            encount.la,
+            f"ha_area{map_area & 0xFF:02d}{f'_s{map_area >> 8:02d}' if map_area >> 8 else ''}_spawner.bin",
+        )
     )
     for map_area in (
         LAArea.OBSIDIAN_FIELDLANDS,
         LAArea.CRIMSON_MIRELANDS,
         LAArea.CORONET_HIGHLANDS,
         LAArea.COBALT_COASTLANDS,
+        LAArea.SEASIDE_HOLLOW,
         LAArea.ALABASTER_ICELANDS,
     )
 }
